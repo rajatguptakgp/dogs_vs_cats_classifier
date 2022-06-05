@@ -1,0 +1,13 @@
+version: '3'
+services: 
+  centos_service:
+    image: docker_centos
+    container_name: centos_container
+    ports: 
+      - 7000:3000
+
+  tf_service:
+    image: docker_tensorflow
+    container_name: tf_container
+    ports: 
+      - 5000:3000

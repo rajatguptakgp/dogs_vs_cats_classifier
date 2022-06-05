@@ -1,0 +1,21 @@
+FROM tensorflow/tensorflow:latest
+
+RUN mkdir /app \ 
+    && cd /app
+
+WORKDIR /app
+
+COPY input ./input
+
+COPY catdog_CV-0.0.1.tar.gz .
+RUN tar -xzf catdog_CV-0.0.1.tar.gz \
+    && rm catdog_CV-0.0.1.tar.gz \
+    && cd catdog_CV-0.0.1 \ 
+    && mv * ../ \
+    && cd .. \ 
+    && rm -rf catdog_CV-0.0.1
+
+RUN /bin/bash -c "pip install pandas opencv-python-headless tqdm matplotlib scikit-learn"
+
+EXPOSE 5000
+ENTRYPOINT ["tail", "-f", "/dev/null"]
