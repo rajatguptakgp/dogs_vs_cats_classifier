@@ -15,7 +15,7 @@ RUN yum -y update  \
     && rpm -e --nodeps curl bzip2 \
     && yum -y install mesa-libGL
 
-RUN conda create -y -n my_env_dev python=3.8
+RUN conda create -y -n my_env_prod python=3.8
 
 RUN mkdir /app \ 
     && cd /app
@@ -34,8 +34,8 @@ RUN tar -xzf catdog_CV-0.0.1.tar.gz \
     && cd .. \ 
     && rm -rf catdog_CV-0.0.1
 
-RUN /bin/bash -c "source activate my_env_dev \
-                  && pip install -r requirements.txt protobuf==3.20.0"
+RUN /bin/bash -c "source activate my_env_prod \
+                  && pip install -r requirements.txt protobuf==3.20.0 flask graphviz"
 
 EXPOSE 7000
 ENTRYPOINT ["tail", "-f", "/dev/null"]

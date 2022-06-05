@@ -1,0 +1,7 @@
+version: '3'
+services: 
+  centos_service:
+    image: docker_centos_prod
+    container_name: centos_container_prod
+    ports: 
+      - 7000:3000

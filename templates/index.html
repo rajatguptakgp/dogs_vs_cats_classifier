@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dog v/s Cat Classifier</title>
+  </head>
+
+  <body>
+    <h2>Upload new image</h2>
+
+    <form action = predict method = post enctype = multipart/form-data>
+      <input type = file name = image>
+      <input type = submit value = predict>
+      <br>
+
+      {% if filename %}
+        <h3>Prediction:</h3>
+        <img class = mb-4 src = ../test_images/{{filename}} width = 235 height = 400 alt = ''>
+        <h4>Predicted class: {{pred_class}}</h4>
+        <h4>Probability: {{score}}</h4>
+      {% endif %}
+    </form>
+  </body>
+</html>
